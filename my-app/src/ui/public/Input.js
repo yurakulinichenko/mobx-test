@@ -4,9 +4,6 @@ import Key from "../../shared/Key";
 import { makeAutoObservable } from "mobx";
 
 export default class Input extends React.Component {
-  constructor() {
-    makeAutoObservable(this);
-  }
   state = { videos: [] };
 
   onVideosInputChange = (e) => {
