@@ -1,10 +1,13 @@
+
 import { makeAutoObservable } from 'mobx';
+
 
 import { baseUrl } from '../shared/constants/common';
 import { Key } from '../shared/constants/common';
 
 class VideosStore {
   videos = [];
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -13,6 +16,7 @@ class VideosStore {
       .then((response) => response.json())
       .then((json) => (this.videos = json.items));
   }
+
 }
 
 export default new VideosStore();

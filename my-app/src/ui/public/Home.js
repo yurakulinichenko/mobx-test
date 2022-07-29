@@ -12,7 +12,9 @@ export const Home = () => {
   return (
     <>
       <Input handleTextChange={onVideosInputChange} />
+
       <List />
+
     </>
   );
 };
