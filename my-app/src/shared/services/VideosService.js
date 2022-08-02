@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react';
 import { baseUrl } from '../constants/common';
 import { Key } from '../constants/common';
 

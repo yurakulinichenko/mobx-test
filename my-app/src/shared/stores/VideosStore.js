@@ -5,6 +5,7 @@ import videosService from '../services/VideosService';
 class VideosStore {
   videos = [];
   currentVideoId = ' ';
+  viewedList = [];
 
   constructor() {
     makeAutoObservable(this);
