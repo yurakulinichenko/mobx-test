@@ -1,11 +1,6 @@
-import { observer } from 'mobx-react';
+import ReactPlayer from 'react-player';
 
-export const VideoPlayer = observer((videos) => {
-  return (
-    <iframe
-      width="420"
-      height="315"
-      src="https://www.youtube.com/embed/${videoId}"
-    ></iframe>
-  );
-});
+export const VideoPlayer = ({ currentVideoId }) => {
+  const videoUrl = `https://www.youtube.com/watch?v=${currentVideoId}`;
+  return <ReactPlayer url={videoUrl} id="video-player" />;
+};

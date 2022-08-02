@@ -1,20 +1,26 @@
 import React from 'react';
 
 import { Input } from '../../shared/components/Input';
-import { List } from '../../shared/components/List';
-import VideosStore from '../../store/VideosStore';
+import { VideoList } from '../../shared/components/VideoList';
+import videosStore from '../../shared/stores/VideosStore';
+import { VideoPlayer } from '../../shared/components/VideoPlayer';
+import { observer } from 'mobx-react';
 
-export const Home = () => {
+export const Home = observer(() => {
   const onVideosInputChange = (e) => {
-    VideosStore.loadVideos(e.target.value);
+    videosStore.loadVideos(e.target.value);
+  };
+  const onListItemClick = (item) => {
+    videosStore.currentVideoId = item.id.videoId;
   };
 
   return (
     <>
-      <Input handleTextChange={onVideosInputChange} />
-
-      <List />
-
+      <div>
+        <Input handleTextChange={onVideosInputChange} />
+      </div>
+      <VideoPlayer currentVideoId={videosStore.currentVideoId} />
+      <VideoList videos={videosStore.videos} chooseVideo={onListItemClick} />
     </>
   );
-};
+});

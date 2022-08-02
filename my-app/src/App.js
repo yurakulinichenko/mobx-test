@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header>Video Player</header>
+      <h1>Video Player</h1>
       <Home />
     </div>
   );
