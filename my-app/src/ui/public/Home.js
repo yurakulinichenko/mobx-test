@@ -13,7 +13,14 @@ export const Home = observer(() => {
   };
   const onListItemClick = (item) => {
     videosStore.currentVideoId = item.id.videoId;
-    videosStore.viewedList.push(item.snippet.title);
+    videosStore.viewedList.push({
+      title: item.snippet.title,
+      id: item.id.videoId,
+    });
+  };
+
+  const onViewedListItemClick = (item) => {
+    videosStore.currentVideoId = item.id;
   };
 
   return (
@@ -23,7 +30,10 @@ export const Home = observer(() => {
       </div>
       <VideoPlayer currentVideoId={videosStore.currentVideoId} />
       <VideoList videos={videosStore.videos} chooseVideo={onListItemClick} />
-      <ViewedVideos showViewed={videosStore.viewedList} />
+      <ViewedVideos
+        showViewed={videosStore.viewedList}
+        viewAgain={onViewedListItemClick}
+      />
     </>
   );
 });
