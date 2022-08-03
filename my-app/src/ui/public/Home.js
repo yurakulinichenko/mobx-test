@@ -12,15 +12,12 @@ export const Home = observer(() => {
     videosStore.loadVideos(e.target.value);
   };
   const onListItemClick = (item) => {
-    videosStore.currentVideoId = item.id.videoId;
-    videosStore.viewedList.push({
-      title: item.snippet.title,
-      id: item.id.videoId,
-    });
+    videosStore.setCurrentVideoId(item.id.videoId);
+    videosStore.setViewedList(item.snippet.title, item.id.videoId);
   };
 
-  const onViewedListItemClick = (item) => {
-    videosStore.currentVideoId = item.id;
+  const onViewedListItemClick = (viewedList) => {
+    videosStore.setCurrentVideoId(viewedList.id);
   };
 
   return (
