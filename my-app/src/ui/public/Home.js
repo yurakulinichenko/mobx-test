@@ -6,6 +6,8 @@ import { VideoList } from '../../shared/components/VideoList';
 import videosStore from '../../shared/stores/VideosStore';
 import { VideoPlayer } from '../../shared/components/VideoPlayer';
 import { ViewedVideos } from '../../shared/components/ViewedVideos';
+import { Container } from '@mui/system';
+import { Box } from '@mui/system';
 
 export const Home = observer(() => {
   const onVideosInputChange = (e) => {
@@ -22,15 +24,18 @@ export const Home = observer(() => {
 
   return (
     <>
-      <div>
+      <Container>
+        <h1>Video Player</h1>
         <Input handleTextChange={onVideosInputChange} />
-      </div>
-      <VideoPlayer currentVideoId={videosStore.currentVideoId} />
-      <VideoList videos={videosStore.videos} chooseVideo={onListItemClick} />
-      <ViewedVideos
-        showViewed={videosStore.viewedList}
-        viewAgain={onViewedListItemClick}
-      />
+        <Box sx={{ display: 'flex' }}>
+          <VideoPlayer currentVideoId={videosStore.currentVideoId} />
+          <ViewedVideos
+            showViewed={videosStore.viewedList}
+            viewAgain={onViewedListItemClick}
+          />
+        </Box>
+        <VideoList videos={videosStore.videos} chooseVideo={onListItemClick} />
+      </Container>
     </>
   );
 });

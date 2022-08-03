@@ -4,7 +4,7 @@ import videosService from '../services/VideosService';
 
 class VideosStore {
   videos = [];
-  currentVideoId = ' ';
+  currentVideoId = '';
   viewedList = [];
 
   constructor() {
