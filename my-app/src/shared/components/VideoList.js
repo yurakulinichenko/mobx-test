@@ -8,7 +8,7 @@ export const VideoList = ({ videos, chooseVideo }) => {
     <List>
       {videos.map((item) => (
         <ListItem key={item.id.videoId}>
-          <ListItemText href="#video-player" onClick={() => chooseVideo(item)}>
+          <ListItemText onClick={() => chooseVideo(item)}>
             <h4>{item.snippet.title}</h4>
             <p>{item.snippet.description}</p>
           </ListItemText>
