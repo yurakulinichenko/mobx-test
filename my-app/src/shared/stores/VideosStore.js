@@ -21,7 +21,7 @@ class VideosStore {
       id: videoId,
     });
     if (this.viewedList.length > 5) {
-      return this.viewedList.shift();
+      this.viewedList.shift();
     }
   }
 
