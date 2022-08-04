@@ -4,6 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@mui/material';
 import { InputAdornment } from '@mui/material';
 
+import { InputStyles } from './Input.styles';
+
 export class Input extends React.Component {
   render() {
     return (
@@ -11,7 +13,7 @@ export class Input extends React.Component {
         <TextField
           id="outlined-search"
           type="search"
-          sx={{ width: '50%', mb: 2 }}
+          sx={InputStyles}
           onChange={this.props.handleTextChange}
           placeholder="Search"
           InputProps={{

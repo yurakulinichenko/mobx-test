@@ -1,15 +1,10 @@
 import React from 'react';
 
-import { Home } from './ui/public/Home';
-
 import './App.css';
+import { Home } from './ui/public/home';
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

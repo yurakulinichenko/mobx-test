@@ -4,16 +4,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { Box } from '@mui/material';
 
+import { VideoListStyles } from './VideoList.styles';
+
 export const VideoList = ({ videos, chooseVideo }) => {
   return (
-    <Box
-      sx={{
-        border: '1px solid rgb(118, 118, 118)',
-        borderRadius: '5px',
-        mt: '10px',
-        padding: '10px',
-      }}
-    >
+    <Box sx={VideoListStyles}>
       <h2>Search Results</h2>
       <List>
         {videos.map((item) => (

@@ -1,13 +1,14 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-
-import { Input } from '../../shared/components/Input';
-import { VideoList } from '../../shared/components/VideoList';
-import videosStore from '../../shared/stores/VideosStore';
-import { VideoPlayer } from '../../shared/components/VideoPlayer';
-import { ViewedVideos } from '../../shared/components/ViewedVideos';
 import { Container } from '@mui/system';
 import { Box } from '@mui/system';
+
+import { Input } from '../../../shared/components/input';
+import { VideoList } from '../../../shared/components/videoList';
+import videosStore from '../../../shared/stores/VideosStore';
+import { VideoPlayer } from '../../../shared/components/videoPlayer';
+import { ViewedVideos } from '../../../shared/components/viewedVideos';
+import { HomeStyles } from './Home.styles';
 
 export const Home = observer(() => {
   const onVideosInputChange = (e) => {
@@ -27,7 +28,7 @@ export const Home = observer(() => {
       <Container>
         <h1>Video Player</h1>
         <Input handleTextChange={onVideosInputChange} />
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={HomeStyles}>
           <VideoPlayer currentVideoId={videosStore.currentVideoId} />
           <ViewedVideos
             showViewed={videosStore.viewedList}
