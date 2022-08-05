@@ -14,9 +14,9 @@ export const Home = observer(() => {
   const onVideosInputChange = (e) => {
     videosStore.loadVideos(e.target.value);
   };
-  const onListItemClick = (item) => {
+  const onListItemClick = (event, item) => {
     videosStore.setCurrentVideoId(item.id.videoId);
-    videosStore.setViewedList(item.snippet.title, item.id.videoId);
+    videosStore.setViewedList(item.label, item.id.videoId);
   };
 
   const onViewedListItemClick = (viewedList) => {
@@ -27,7 +27,11 @@ export const Home = observer(() => {
     <>
       <Container>
         <h1>Video Player</h1>
-        <Input handleTextChange={onVideosInputChange} />
+        <Input
+          handleTextChange={onVideosInputChange}
+          videos={videosStore.videos}
+          chooseVideo={onListItemClick}
+        />
         <Box sx={HomeStyles}>
           <VideoPlayer currentVideoId={videosStore.currentVideoId} />
           <ViewedVideos
@@ -35,7 +39,7 @@ export const Home = observer(() => {
             viewAgain={onViewedListItemClick}
           />
         </Box>
-        <VideoList videos={videosStore.videos} chooseVideo={onListItemClick} />
+        {/* <VideoList /> */}
       </Container>
     </>
   );

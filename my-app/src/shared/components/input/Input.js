@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
-import { Box } from '@mui/material';
+import { Autocomplete, Stack } from '@mui/material';
 import { InputAdornment } from '@mui/material';
 
 import { InputStyles } from './Input.styles';
@@ -9,22 +9,34 @@ import { InputStyles } from './Input.styles';
 export class Input extends React.Component {
   render() {
     return (
-      <Box>
-        <TextField
-          id="outlined-search"
-          type="search"
+      <Stack>
+        <Autocomplete
           sx={InputStyles}
-          onChange={this.props.handleTextChange}
+          freeSolo
+          disableClearable
+          options={this.props.videos.map((option) => ({
+            label: option.snippet.title,
+            id: option.id,
+          }))}
+          onChange={this.props.chooseVideo}
           placeholder="Search"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              onChange={this.props.handleTextChange}
+              InputProps={{
+                ...params.InputProps,
+                type: 'search',
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
         />
-      </Box>
+      </Stack>
     );
   }
 }
