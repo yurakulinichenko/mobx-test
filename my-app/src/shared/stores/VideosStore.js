@@ -15,14 +15,19 @@ class VideosStore {
     this.currentVideoId = item;
   }
 
-  setViewedList(title, videoId) {
+  setViewedList(title, videoId, url) {
     this.viewedList.push({
       title: title,
       id: videoId,
+      icon: url,
     });
     if (this.viewedList.length > 5) {
       this.viewedList.shift();
     }
+  }
+
+  removeItem(item) {
+    this.viewedList.splice(item, 1);
   }
 
   async loadVideos(text) {

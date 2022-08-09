@@ -4,11 +4,11 @@ import { Container } from '@mui/system';
 import { Box } from '@mui/system';
 
 import { Input } from '../../../shared/components/input';
-import { VideoList } from '../../../shared/components/videoList';
 import videosStore from '../../../shared/stores/VideosStore';
 import { VideoPlayer } from '../../../shared/components/videoPlayer';
 import { ViewedVideos } from '../../../shared/components/viewedVideos';
 import { HomeStyles } from './Home.styles';
+import { Header } from '../../../shared/components/header';
 
 export const Home = observer(() => {
   const onVideosInputChange = (e) => {
@@ -16,17 +16,21 @@ export const Home = observer(() => {
   };
   const onListItemClick = (event, item) => {
     videosStore.setCurrentVideoId(item.id.videoId);
-    videosStore.setViewedList(item.label, item.id.videoId);
+    videosStore.setViewedList(item.label, item.id.videoId, item.icon);
   };
 
   const onViewedListItemClick = (viewedList) => {
     videosStore.setCurrentVideoId(viewedList.id);
   };
 
+  const handleRemove = (item) => {
+    videosStore.removeItem(item);
+  };
+
   return (
     <>
       <Container>
-        <h1>Video Player</h1>
+        <Header />
         <Input
           handleTextChange={onVideosInputChange}
           videos={videosStore.videos}
@@ -34,12 +38,13 @@ export const Home = observer(() => {
         />
         <Box sx={HomeStyles}>
           <VideoPlayer currentVideoId={videosStore.currentVideoId} />
+
           <ViewedVideos
             showViewed={videosStore.viewedList}
             viewAgain={onViewedListItemClick}
+            removeFromList={handleRemove}
           />
         </Box>
-        {/* <VideoList /> */}
       </Container>
     </>
   );

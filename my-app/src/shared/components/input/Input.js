@@ -17,6 +17,7 @@ export class Input extends React.Component {
           options={this.props.videos.map((option) => ({
             label: option.snippet.title,
             id: option.id,
+            icon: option.snippet.thumbnails.default,
           }))}
           onChange={this.props.chooseVideo}
           placeholder="Search"
