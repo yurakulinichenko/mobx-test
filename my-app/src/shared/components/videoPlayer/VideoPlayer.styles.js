@@ -1,7 +1,7 @@
 const VideoPlayerStyles = {
-  playing: 'true',
-  loop: 'true',
-  controls: 'true',
+  playing: true,
+  loop: true,
+  controls: true,
   width: '100%',
 };
 

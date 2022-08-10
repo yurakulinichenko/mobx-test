@@ -21,12 +21,15 @@ export const ViewedVideos = ({ showViewed, viewAgain, removeFromList }) => {
             <ListItem key={item.id} onClick={() => viewAgain(item)}>
               <ListItemText>
                 <Box sx={ListItemTextStyles}>
-                  <img src={`${item.icon.url}`} />
+                  <img src={`${item.icon.url}`} alt={'image'} />
                   {item.title}
                 </Box>
               </ListItemText>
               <DeleteForeverRoundedIcon
-                onClick={() => removeFromList(item.index)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  removeFromList(item.id);
+                }}
               />
             </ListItem>
           </Link>

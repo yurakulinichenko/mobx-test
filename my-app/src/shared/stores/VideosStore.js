@@ -27,7 +27,10 @@ class VideosStore {
   }
 
   removeItem(item) {
-    this.viewedList.splice(item, 1);
+    const newList = this.viewedList.filter(
+      (viewedList) => viewedList.id !== item
+    );
+    this.viewedList = newList;
   }
 
   async loadVideos(text) {
